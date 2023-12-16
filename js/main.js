@@ -11,5 +11,9 @@
 
 
 	/*----- functions -----*/
+	init();
 
-    
+	function () {
+
+	render();
+	}
