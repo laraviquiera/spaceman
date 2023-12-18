@@ -7,8 +7,8 @@
 
 	/*----- cached elements  -----*/
 	const keys = document.querySelectorAll('.key');
-	const wordDisplay = document.querySelector('.word-display');
-	const numLivesDisplay = document.querySelector('.num-lives b');	
+	const wordDisplay = document.getElementsByClassName('word-display');
+	const numLivesDisplay = document.getElementsByClassName('num-lives b');	
 	const randomWord = () => {
 		//selecting a random word and hint from the wordList
 		const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
