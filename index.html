@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="main.css" rel="stylesheet" type="text/css"/>
-    <script defer src="word-list.js"></script>
-    <script defer src="main.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Spaceman Game</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script defer src="word-list.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+  </style>
 </head>
+
 <body>
-    
+  <main>
+    <div class="game-result">
+      <div class="content">
+        <h4>Game Over!</h4>
+        <p>The correct answer was:
+          <b></b>
+        </p>
+        <button class="play-again">PLAY AGAIN</button>
+      </div>
+    </div>
+    <div class="main-section">
+      <div class="spaceman-box">
+        <img src="https://i.postimg.cc/RFhWRn7K/Spaceman-img.png" alt="spaceman-img">
+      </div>
+      <div class="game-box">
+        <ul class="word-display">
+        </ul>
+        <h4 class="hint-text">
+          Hint:
+          <b></b>
+        </h4>
+        <h4 class="num-lives">
+          Lives left:
+          <b></b>
+        </h4>
+        <div id="keyboard">
+          <button class="key">A</button><button class="key">B</button>
+          <button class="key">C</button><button class="key">D</button>
+          <button class="key">E</button><button class="key">F</button>
+          <button class="key">G</button><button class="key">H</button>
+          <button class="key">I</button><button class="key">J</button>
+          <button class="key">K</button><button class="key">L</button>
+          <button class="key">M</button><button class="key">N</button>
+          <button class="key">O</button><button class="key">P</button>
+          <button class="key">Q</button><button class="key">R</button>
+          <button class="key">S</button><button class="key">T</button>
+          <button class="key">U</button><button class="key">V</button>
+          <button class="key">W</button><button class="key">X</button>
+          <button class="key">Y</button><button class="key">Z</button>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
-</html>

@@ -1,3 +1,5 @@
+/*----- constants -----*/
+
 const wordList = [
     {
       word: "muffin",
