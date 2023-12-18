@@ -10,7 +10,7 @@ const keys = document.querySelectorAll('.key');
 const wordDisplay = document.getElementsByClassName('word-display');
 const livesDisplay = document.querySelector('.num-lives b');	
 const randomWord = () => {
-const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
+	const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
 	currentWord = word;
 	document.getElementsByClass("hint-text b").innerText = hint;
 	wordDisplay.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
@@ -47,7 +47,7 @@ function handleLetterSelection(selectedLetter) {
 	  
 	  }
 
-	  
+	
 init();
 
 function () {
