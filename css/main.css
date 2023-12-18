@@ -122,6 +122,7 @@
     max-height: 200px;
     text-align: center;
     border-radius: 10px;
+    padding: 20px;
   }
   
   .game-result h4 {
@@ -130,7 +131,7 @@
   
   .game-result p {
     font-size: 1.15rem;
-    margin: 15px 0 30px;
+    margin: 30px 0;
     font-weight: 500;
   }
   
