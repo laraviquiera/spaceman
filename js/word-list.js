@@ -15,7 +15,7 @@ const wordList = [
     },
     {
       word: "cowboy",
-      hint: "(especially in the western US) a man who herds and tends cattle, performing much of his work on horseback"
+      hint: "a man who herds and tends cattle, performing much of his work on horseback"
     },
     {
       word: "lizard",
