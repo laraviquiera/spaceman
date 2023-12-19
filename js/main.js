@@ -22,7 +22,7 @@ let numLives;
 init();
 
 function init() {
-  currentWord = "";
+  currentWord = getRandomWord();
   guessedLetters = "";
   wrongGuesses = 0;
   numLives = 6;
@@ -33,6 +33,7 @@ function init() {
 function getRandomWord() {
 	const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
 	document.querySelector(".hint-text b").innerText = hint;
+	currentWord = word;
 	wordDisplay.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
 	render();
   };
