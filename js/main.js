@@ -15,6 +15,8 @@ let numLives;
 
 /*----- event listeners -----*/
 
+document.querySelector('main').addEventListener('click', handleLetterClick);
+playAgainBtn.addEventListener('click', resetGame);
 
 
 /*----- functions -----*/
@@ -23,7 +25,7 @@ init();
 
 function init() {
   currentWord = getRandomWord();
-  guessedLetters = "";
+  guessedLetters = [];
   wrongGuesses = 0;
   numLives = 6;
   render();
@@ -31,50 +33,80 @@ function init() {
 
 function getRandomWord() {
   const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
-  document.querySelector(".hint-text b").innerText = hint;
-  currentWord = word;
-  wordDisplay.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
+  document.querySelector('.hint-text b').innerText = hint;
+  return word;
   render();
-};
+}
 
-//Virtual Keyboard
-function keyboardLetters() {
-  keys.forEach(key => {
-  key.addEventListener('click', () => {
-    guessedLetters = key.textContent;
-    handleLetterSelection(guessedLetters);
+//trying to display the correct guessed letters in the placeholder
+// keys.forEach(key => {
+//   key.addEventListener('click', () => {
+//     wordDisplay.value += key.innerText
+//   })
+// })
+
+function renderWordDisplay() {
+  const wordArray = currentWord.split('').map(letter => {
+    return guessedLetters.includes(letter) ? `<li class="letter">${letter}</li>` : '<li class="letter"></li>';
   });
-});
+  wordDisplay.innerHTML = wordArray.join('');
+}
+
+function handleLetterClick(evt) {
+  if (evt.target.matches('.key')) {
+    const clickedLetter = evt.target.textContent;
+    if (!guessedLetters.includes(clickedLetter)) {
+      guessedLetters.push(clickedLetter);
+      if (!currentWord.includes(clickedLetter)) {
+        wrongGuesses++;
+        numLives--;
+      }
+      render();
+    }
+  }
+}
+
+function updateLivesDisplay() {
+  livesDisplay.textContent = numLives;
+}
+
+function checkGameStatus() {
+  if (wrongGuesses === 6) {
+    showGameOver(false);
+  } else if (wordCompleted()) {
+    showGameOver(true);
+  }
+}
+
+function wordCompleted() {
+  return currentWord.split('').every((letter) => guessedLetters.includes(letter));
+}
+
+function showGameOver(isVictory) {
+  const resultText = isVictory ? 'Congrats! You found the word!' : 'Game Over!';
+  const correctAnswer = currentWord.toUpperCase();
+  document.querySelector('.game-result h4').textContent = resultText;
+  document.querySelector('.game-result p b').textContent = correctAnswer;
+  gameResult.style.display = 'flex';
+}
+
+function resetGame() {
+  guessedLetters = [];
+  wrongGuesses = 0;
+  numLives = 6;
+  currentWord = getRandomWord();
+  renderWordDisplay();
+  updateLivesDisplay();
+  gameResult.style.display = 'none';
+  
   render();
 }
 
-
-function startGame() {
-  const initGame = (button, clickedLetter) => {
-    if(currentWord.includes(clickedLetter)) {
-      [...currentWord].forEach((letter, index) => {
-        if(letter === clickedLetter) {
-          guessed.push(letter);
-          wordDisplay.querySelectorAll("li")[index].innerText = letter;
-          wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
-        }
-      });
-      } else {
-          numLives--;
-        }
-    
-      button.disabled = true; // Disabling the clicked button so user can't click again
-      livesDisplay.innerText = `${numLives}`;
-      // Calling gameOver function if any of these condition meets
-      if(wrongGuesses === numLives) return gameOver(false);
-      if(guessedLetters.length === currentWord.length) return gameOver(true);
-    }
-}
-
-
+// Initialization
+// currentWord = getRandomWord();
 
 function render() {
-  // guessedLetters();
-  // wrongGuesses();
-  // numLives();
+  renderWordDisplay();
+  updateLivesDisplay();
+  checkGameStatus();
 }
