@@ -1,32 +1,34 @@
-/*----- constants -----*/
-
 const wordList = [
-    {
-      word: "muffin",
-      hint: "a small domed spongy cake made with eggs and baking powder"
-    },
-    {
-      word: "fizzle",
-      hint: "make a feeble hissing or spluttering sound"
-    },
-    {
-      word: "buzzer",
-      hint: "an electrical device that makes a buzzing noise and is used for signalling"
-    },
-    {
-      word: "cowboy",
-      hint: "a man who herds and tends cattle, performing much of his work on horseback"
-    },
-    {
-      word: "lizard",
-      hint: "a reptile that typically has a long body and tail, four legs, movable eyelids, and a rough, scaly, or spiny skin."
-    },
-    {
-      word: "liquor",
-      hint: "alcoholic drink, especially distilled spirits."
-    },
-    {
-      word: "baking",
-      hint: "cook (food) by dry heat without direct exposure to a flame, typically in an oven"
-    },
-  ];
+  {
+    word: "inheritance",
+    hint: "A principle in Object Oriented Programming where a class specializes another class"
+  },
+  {
+    word: "encapsulation",
+    hint: "A principle in Object Oriented Programming that refers to the bundling of related data and behavior together"
+  },
+  {
+    word: "Brendan",
+    hint: "the first name of the programmer who created Javascript programming language"
+  },
+  {
+    word: "properties",
+    hint: "Objects are a collection of zero or more _____"
+  },
+  {
+    word: "value",
+    hint: "Properties are key: _____ pairs."
+  },
+  {
+    word: "array",
+    hint: "a data structure used to store an ordered “list” of data"
+  },
+  {
+    word: "boolean",
+    hint: "this object represents a truth value: true or false"
+  },
+  {
+    word: "while",
+    hint: "sets up conditions under which a loop executes at least once, as long as the specified condition is evaluated as true"
+  }
+];
