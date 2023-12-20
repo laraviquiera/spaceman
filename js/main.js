@@ -1,30 +1,26 @@
 /*----- constants -----*/
-
 const MAX_INCORRECT = 6;
-
 
 /*----- cached elements  -----*/
 
 const wordDisplayEl = document.querySelector('.word-display');
 const livesDisplay = document.querySelector('.num-lives b');
-const keys = document.querySelectorAll('.key');
+const keyEls = document.querySelectorAll('.key');
 const gameResult = document.querySelector('.game-result');
 const playAgainBtn = gameResult.querySelector('button');
 const hintEl = document.querySelector('h4.hint-text > b');
 
-
 /*----- app's state (variables) -----*/
 
 let currentWord;
+let wordHint;
 let guessedLetters;
 let wrongGuesses;
-let wordHint;
 
 /*----- event listeners -----*/
 
 document.querySelector('main').addEventListener('click', handleLetterClick);
 playAgainBtn.addEventListener('click', init);
-
 
 /*----- functions -----*/
 
@@ -40,28 +36,24 @@ function init() {
 
 function setRandomWordAndHint() {
   const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
-  currentWord = word;
+  currentWord = word.toUpperCase();
   wordHint = hint; 
 }
 
-
 function handleLetterClick(evt) {
-  if (!evt.target.matches('.key')) return;
-  const letter = evt.target.textContent;
+  if (!evt.target.matches('.key')) return; //Guard - if does not match any letters - return
+  const letter = evt.target.innerText;//retrieves the text content of the clicked element: letter
+  console.log(letter);
   if (currentWord.includes(letter)) {
-    let found = false;
-    for (let i = 0; i < currentWord.length; i++) {
-      if (currentWord[i] === letter) {
-        guessedLetters[i] = letter;
-        found = true;
+    guessedLetters.forEach(function(char, idx) {
+      if (currentWord[idx] === letter) {
+        guessedLetters[idx] = letter;
       }
-    }
-    if (!found) {
-      wrongGuesses.push(letter);
-      numLives--;
-    }
-    render();
+    });
+  } else {
+    wrongGuesses.push(letter);
   }
+  render();
 }
 
 function checkGameStatus() {
@@ -79,16 +71,21 @@ function wordCompleted() {
 function showGameOver(isVictory) {
   const resultText = isVictory ? 'Congrats! You found the word!' : 'Game Over!';
   const correctAnswer = currentWord;
-  document.querySelector('.game-result h4').textContent = resultText;
-  document.querySelector('.game-result p b').textContent = correctAnswer;
+  document.querySelector('.game-result h4').innerText = resultText;
+  document.querySelector('.game-result p b').innerText = correctAnswer;
   gameResult.style.display = 'flex';
 }
 
-
 function render() {
-  wordDisplayEl.innerHTML = guessedLetters.join('');
+  wordDisplayEl.innerText = guessedLetters.join('');
   livesDisplay.innerText = MAX_INCORRECT - wrongGuesses.length;
   hintEl.innerText = wordHint;
-  // checkGameStatus();
-  // gameResult.style.display = 'none';
+
+  if (wordCompleted()) {
+    showGameOver(true);
+  } else if (wrongGuesses.length >= MAX_INCORRECT) {
+    showGameOver(false);
+  } else {
+    gameResult.style.display = 'none';
+  }
 }

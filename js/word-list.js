@@ -10,7 +10,7 @@ const wordList = [
     hint: "A principle in Object Oriented Programming that refers to the bundling of related data and behavior together"
   },
   {
-    word: "Brendan",
+    word: "brendan",
     hint: "the first name of the programmer who created Javascript programming language"
   },
   {
