@@ -1,22 +1,29 @@
+/*----- constants -----*/
+
+const MAX_INCORRECT = 6;
+
+
 /*----- cached elements  -----*/
 
-const wordDisplay = document.querySelector('.word-display');
+const wordDisplayEl = document.querySelector('.word-display');
 const livesDisplay = document.querySelector('.num-lives b');
 const keys = document.querySelectorAll('.key');
 const gameResult = document.querySelector('.game-result');
 const playAgainBtn = gameResult.querySelector('button');
+const hintEl = document.querySelector('h4.hint-text > b');
+
 
 /*----- app's state (variables) -----*/
 
 let currentWord;
 let guessedLetters;
 let wrongGuesses;
-let numLives;
+let wordHint;
 
 /*----- event listeners -----*/
 
 document.querySelector('main').addEventListener('click', handleLetterClick);
-playAgainBtn.addEventListener('click', resetGame);
+playAgainBtn.addEventListener('click', init);
 
 
 /*----- functions -----*/
@@ -24,50 +31,37 @@ playAgainBtn.addEventListener('click', resetGame);
 init();
 
 function init() {
-  currentWord = getRandomWord();
-  guessedLetters = [];
-  wrongGuesses = 0;
-  numLives = 6;
+  setRandomWordAndHint()
+  guessedLetters = new Array(currentWord.length).fill('_');
+  wrongGuesses = [];
+
   render();
 }
 
-function getRandomWord() {
+function setRandomWordAndHint() {
   const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
-  document.querySelector('.hint-text b').innerText = hint;
-  return word;
-  render();
+  currentWord = word;
+  wordHint = hint; 
 }
 
-//trying to display the correct guessed letters in the placeholder
-// keys.forEach(key => {
-//   key.addEventListener('click', () => {
-//     wordDisplay.value += key.innerText
-//   })
-// })
-
-function renderWordDisplay() {
-  const wordArray = currentWord.split('').map(letter => {
-    return guessedLetters.includes(letter) ? `<li class="letter">${letter}</li>` : '<li class="letter"></li>';
-  });
-  wordDisplay.innerHTML = wordArray.join('');
-}
 
 function handleLetterClick(evt) {
-  if (evt.target.matches('.key')) {
-    const clickedLetter = evt.target.textContent;
-    if (!guessedLetters.includes(clickedLetter)) {
-      guessedLetters.push(clickedLetter);
-      if (!currentWord.includes(clickedLetter)) {
-        wrongGuesses++;
-        numLives--;
+  if (!evt.target.matches('.key')) return;
+  const letter = evt.target.textContent;
+  if (currentWord.includes(letter)) {
+    let found = false;
+    for (let i = 0; i < currentWord.length; i++) {
+      if (currentWord[i] === letter) {
+        guessedLetters[i] = letter;
+        found = true;
       }
-      render();
     }
+    if (!found) {
+      wrongGuesses.push(letter);
+      numLives--;
+    }
+    render();
   }
-}
-
-function updateLivesDisplay() {
-  livesDisplay.textContent = numLives;
 }
 
 function checkGameStatus() {
@@ -84,29 +78,17 @@ function wordCompleted() {
 
 function showGameOver(isVictory) {
   const resultText = isVictory ? 'Congrats! You found the word!' : 'Game Over!';
-  const correctAnswer = currentWord.toUpperCase();
+  const correctAnswer = currentWord;
   document.querySelector('.game-result h4').textContent = resultText;
   document.querySelector('.game-result p b').textContent = correctAnswer;
   gameResult.style.display = 'flex';
 }
 
-function resetGame() {
-  guessedLetters = [];
-  wrongGuesses = 0;
-  numLives = 6;
-  currentWord = getRandomWord();
-  renderWordDisplay();
-  updateLivesDisplay();
-  gameResult.style.display = 'none';
-  
-  render();
-}
-
-// Initialization
-// currentWord = getRandomWord();
 
 function render() {
-  renderWordDisplay();
-  updateLivesDisplay();
-  checkGameStatus();
+  wordDisplayEl.innerHTML = guessedLetters.join('');
+  livesDisplay.innerText = MAX_INCORRECT - wrongGuesses.length;
+  hintEl.innerText = wordHint;
+  // checkGameStatus();
+  // gameResult.style.display = 'none';
 }
