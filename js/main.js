@@ -41,8 +41,12 @@ function setRandomWordAndHint() {
 }
 
 function handleLetterClick(evt) {
-  if (!evt.target.matches('.key')) return;
+  if (!evt.target.matches('.key') || evt.target.disabled) return;
+  const letterButton = evt.target;
   const letter = evt.target.innerText;
+  
+  letterButton.disabled = true;
+  
   if (currentWord.includes(letter)) {
     guessedLetters.forEach(function(char, idx) {
       if (currentWord[idx] === letter) {
