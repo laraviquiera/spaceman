@@ -1,5 +1,5 @@
 #### GAME PLANNING
-##### Choice of Game: Spaceman :male-astronaut:
+##### Choice of Game: Spaceman :astronaut: :rocket:
 ---
 #### PSEUDOCODE
 
