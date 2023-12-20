@@ -1,5 +1,5 @@
 #### GAME PLANNING
-##### Choice of Game: Spaceman
+##### Choice of Game: Spaceman :male-astronaut:
 ---
 #### PSEUDOCODE
 
@@ -30,3 +30,10 @@
 - Generate a random word and its hint.
 - If the correct letter is selected, display the letter in the placeholder. Otherwise, the number of lives will decrease.
 - Check the game status. There are maximum of 6 lives/attempts. - If the secret word was correctly guessed, congratulate the winner and show the Play Again button.
+##
+##
+![Spaceman Model Rendering](https://i.imgur.com/LDTmkCL.png)
+
+##
+##
+
