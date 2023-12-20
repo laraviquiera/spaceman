@@ -22,12 +22,14 @@ In this game, the player will be provided with a "secret word" and a hint. The p
 
 ---
 
-#### Play the game here:
+#### Getting Started:
 
-[Spaceman Game](https://laraviquiera.github.io/spaceman/ "Play Spaceman!") :rocket:
+[Play the game Spaceman here](https://laraviquiera.github.io/spaceman/ "Play Spaceman!") :rocket:
+
+Enjoy!
 
 ---
-#### Future Enhancements
+#### Next Steps (Future Enhancements)
  - Update game visuals (e.g. removing parts of the rocket for every incorrect guess)
 
  - Add sound effects
