@@ -41,9 +41,8 @@ function setRandomWordAndHint() {
 }
 
 function handleLetterClick(evt) {
-  if (!evt.target.matches('.key')) return; //Guard - if does not match any letters - return
-  const letter = evt.target.innerText;//retrieves the text content of the clicked element: letter
-  console.log(letter);
+  if (!evt.target.matches('.key')) return;
+  const letter = evt.target.innerText;
   if (currentWord.includes(letter)) {
     guessedLetters.forEach(function(char, idx) {
       if (currentWord[idx] === letter) {
