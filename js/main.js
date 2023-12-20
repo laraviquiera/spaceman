@@ -30,6 +30,9 @@ function init() {
   setRandomWordAndHint()
   guessedLetters = new Array(currentWord.length).fill('_');
   wrongGuesses = [];
+  keyEls.forEach((key) => {
+    key.disabled = false;
+  });
 
   render();
 }
