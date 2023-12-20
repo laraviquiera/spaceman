@@ -15,7 +15,7 @@ const wordList = [
   },
   {
     word: "properties",
-    hint: "Objects are a collection of zero or more _____"
+    hint: "in Javascript, objects are a collection of zero or more _____"
   },
   {
     word: "value",
@@ -23,14 +23,14 @@ const wordList = [
   },
   {
     word: "array",
-    hint: "a data structure used to store an ordered “list” of data"
+    hint: "in Javascript, this is a data structure used to store an ordered “list” of data"
   },
   {
     word: "boolean",
-    hint: "this object represents a truth value: true or false"
+    hint: "in Javascript, this object represents a truth value: true or false"
   },
   {
     word: "while",
-    hint: "sets up conditions under which a loop executes at least once, as long as the specified condition is evaluated as true"
+    hint: "in Javascript, this sets up conditions under which a loop executes at least once, as long as the specified condition is evaluated as true"
   }
 ];
