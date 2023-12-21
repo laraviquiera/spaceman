@@ -1,5 +1,10 @@
 /*----- constants -----*/
 const MAX_INCORRECT = 6;
+const sounds = {
+  win: 'sounds/won.wav',
+  lose: 'sounds/lost.wav',
+  letterClick: 'sounds/letterclick.wav'
+}
 
 /*----- cached elements  -----*/
 
@@ -9,6 +14,7 @@ const keyEls = document.querySelectorAll('.key');
 const gameResult = document.querySelector('.game-result');
 const playAgainBtn = gameResult.querySelector('button');
 const hintEl = document.querySelector('h4.hint-text > b');
+const player = new Audio();
 
 /*----- app's state (variables) -----*/
 
@@ -59,6 +65,7 @@ function handleLetterClick(evt) {
   } else {
     wrongGuesses.push(letter);
   }
+  playSound('letterClick');
   render();
 }
 
@@ -89,9 +96,17 @@ function render() {
 
   if (wordCompleted()) {
     showGameOver(true);
+    playSound('win');
   } else if (wrongGuesses.length >= MAX_INCORRECT) {
     showGameOver(false);
+    playSound('lose');
   } else {
     gameResult.style.display = 'none';
   }
+}
+
+function playSound(name) {
+  player.src = sounds[name];
+  player.play();
+  player.volume = 0.5;
 }
