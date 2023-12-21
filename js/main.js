@@ -97,12 +97,12 @@ function render() {
   if (wordCompleted()) {
     setTimeout(function() {
       playSound('win');
-    }, 300)
+    }, 100)
     showGameOver(true);
   } else if (wrongGuesses.length >= MAX_INCORRECT) {
     setTimeout(function() {
       playSound('lose');
-    }, 300)
+    }, 100)
     showGameOver(false);
   } else {
     gameResult.style.display = 'none';
