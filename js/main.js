@@ -95,11 +95,15 @@ function render() {
   hintEl.innerText = wordHint;
 
   if (wordCompleted()) {
+    setTimeout(function() {
+      playSound('win');
+    }, 300)
     showGameOver(true);
-    playSound('win');
   } else if (wrongGuesses.length >= MAX_INCORRECT) {
+    setTimeout(function() {
+      playSound('lose');
+    }, 300)
     showGameOver(false);
-    playSound('lose');
   } else {
     gameResult.style.display = 'none';
   }
