@@ -33,3 +33,7 @@ Enjoy!
  - Update game visuals (e.g. removing parts of the rocket for every incorrect guess)
 
  - Add sound effects
+
+ - Add media queries for responsive design
+
+ - Add different word categories
