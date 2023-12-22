@@ -6,6 +6,7 @@
 >**1. Constants**
 - Maximum incorrect guesses
 - Secret word and hints
+- Sound effects
 
 >**2. App's State (Variables)**
 - Correct guessed letters
@@ -14,6 +15,7 @@
 - Play Again button
 - Hint Display
 - Keyboard Elements/Letters
+- Audio/Sound
 
 >**3. Cached Elements**
 - Current word (Secret word)
@@ -23,7 +25,7 @@
 
 >**4. Event Listeners**
 - Wait for the user to select a letter then track correct and wrong guesses. Display the correct letter in the placeholder.
-- Letters that are used will be inactive.
+- Letters that are used will be inactive/no longer be displayed.
 - Once the game is over, display the Play Again button along with the correct word.
 
 >**5. Functions**
