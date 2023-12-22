@@ -11,7 +11,7 @@ In this game, the player will be provided with a "secret word" and a hint. The p
 ---
 #### Game Preview 
 
-![spaceman preview](https://i.imgur.com/WRcFwGa.png)
+![spaceman preview](https://i.imgur.com/F8TRzXJ.png)
 
 ---
 #### Technologies Used
