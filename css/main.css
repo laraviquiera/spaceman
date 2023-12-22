@@ -12,6 +12,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   background-color: #2e4b56;
+  background-image: url('../imgs/spacebg.png')
 }
 
 .main-section {
@@ -99,9 +100,6 @@ body {
 #keyboard button[disabled] {
 pointer-events: none;
 opacity: 0;
-}
-:where(.game-result, .keyboard) button:hover {
-    background: #8286c9;
 }
 
 .game-result {

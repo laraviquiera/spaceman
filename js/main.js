@@ -112,5 +112,5 @@ function render() {
 function playSound(name) {
   player.src = sounds[name];
   player.play();
-  player.volume = 0.5;
+  player.volume = 0.4;
 }
